@@ -12,7 +12,7 @@ return [
 	'marginHeader'       => 0,
 	'marginFooter'       => 0,
 	'orientation'        => 'P',
-	'title'              => 'Laravel wrapper for mPDF',
+	'title'              => 'Laravel mPDF',
 	'author'             => '',
 	'watermark'          => '',
 	'showWatermark'      => false,
