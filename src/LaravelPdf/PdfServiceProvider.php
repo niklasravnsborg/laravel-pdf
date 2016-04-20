@@ -1,13 +1,13 @@
 <?php
 
-namespace niklasravnsborg\LaravelMpdf;
+namespace niklasravnsborg\LaravelPdf;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 include base_path('vendor/mpdf/mpdf/mpdf.php');
 
-class MpdfServiceProvider extends BaseServiceProvider {
+class PdfServiceProvider extends BaseServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -51,7 +51,7 @@ class MpdfServiceProvider extends BaseServiceProvider {
 			$mpdf->watermark_font = Config::get('pdf.watermarkFont');
 			$mpdf->watermarkTextAlpha = Config::get('pdf.watermarkTextAlpha');
 
-			return new MpdfWrapper($mpdf);
+			return new PdfWrapper($mpdf);
 		});
 	}
 

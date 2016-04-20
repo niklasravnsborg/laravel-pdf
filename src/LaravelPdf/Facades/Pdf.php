@@ -1,10 +1,10 @@
 <?php
 
-namespace niklasravnsborg\LaravelMpdf\Facades;
+namespace niklasravnsborg\LaravelPdf\Facades;
 
 use Illuminate\Support\Facades\Facade as BaseFacade;
 
-class Mpdf extends BaseFacade {
+class Pdf extends BaseFacade {
 
 	/**
 	 * Get the registered name of the component.

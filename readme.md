@@ -1,29 +1,29 @@
-# Laravel mPDF: mPDF wrapper for Laravel 5
+# Laravel PDF: mPDF wrapper for Laravel 5
 
 > Easily generate PDF documents from HTML right inside of Laravel using this mPDF wrapper.
 
 
 ## Installation
 
-Require this package in your composer.json or install it by running:
+Require this package in your `composer.json` or install it by running:
 
 ```
-composer require niklasravnsborg/laravel-mpdf
+composer require niklasravnsborg/laravel-pdf
 ```
 
-To start using  Laravel add the Service Provider and the Facade to your `config/app.php`:
+To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
 
 ```
 'providers' => [
 	// ...
-	niklasravnsborg\LaravelMpdf\MpdfServiceProvider::class
+	niklasravnsborg\LaravelPdf\PdfServiceProvider::class
 ]
 ```
 
 ```
 'aliases' => [
 	// ...
-	'PDF' => niklasravnsborg\LaravelMpdf\Facades\Mpdf::class
+	'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
 ]
 ```
 
@@ -47,7 +47,7 @@ return [
 	'marginHeader'       => 0,
 	'marginFooter'       => 0,
 	'orientation'        => 'P',
-	'title'              => 'Laravel mPDF',
+	'title'              => 'Laravel PDF',
 	'author'             => '',
 	'watermark'          => '',
 	'showWatermark'      => false,
@@ -59,4 +59,4 @@ return [
 
 ## License
 
-This mPDF Wrapper for Laravel is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Laravel PDF is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

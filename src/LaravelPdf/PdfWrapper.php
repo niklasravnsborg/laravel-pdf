@@ -1,16 +1,15 @@
 <?php
 
-namespace niklasravnsborg\LaravelMpdf;
+namespace niklasravnsborg\LaravelPdf;
 
 /**
- * A Laravel wrapper for mPDF
+ * Laravel PDF: mPDF wrapper for Laravel 5
  *
- * @package laravel-mpdf
+ * @package laravel-pdf
  * @author Niklas Ravnsborg-Gjertsen
  */
-class MpdfWrapper {
+class PdfWrapper {
 
-	/** @var \Mpdf  */
 	protected $mpdf;
 	protected $rendered = false;
 	protected $options;
