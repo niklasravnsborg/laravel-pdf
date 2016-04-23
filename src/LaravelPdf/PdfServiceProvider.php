@@ -29,27 +29,27 @@ class PdfServiceProvider extends BaseServiceProvider {
 		$this->app->bind('mpdf.wrapper', function($app, $cfg) {
 
 			$mpdf = new \mPDF(
-				Config::get('pdf.mode'),            // mode - default ''
-				Config::get('pdf.format'),          // format - A4, for example, default ''
-				Config::get('pdf.defaultFontSize'), // font size - default 0
-				Config::get('pdf.defaultFont'),     // default font family
-				Config::get('pdf.marginLeft'),      // margin_left
-				Config::get('pdf.marginRight'),     // margin right
-				Config::get('pdf.marginTop'),       // margin top
-				Config::get('pdf.marginBottom'),    // margin bottom
-				Config::get('pdf.marginHeader'),    // margin header
-				Config::get('pdf.marginFooter'),    // margin footer
-				Config::get('pdf.orientation')      // L - landscape, P - portrait
+				Config::get('pdf.mode'),              // mode - default ''
+				Config::get('pdf.format'),            // format - A4, for example, default ''
+				Config::get('pdf.default_font_size'), // font size - default 0
+				Config::get('pdf.default_font'),      // default font family
+				Config::get('pdf.margin_left'),       // margin_left
+				Config::get('pdf.margin_right'),      // margin right
+				Config::get('pdf.margin_top'),        // margin top
+				Config::get('pdf.margin_bottom'),     // margin bottom
+				Config::get('pdf.margin_header'),     // margin header
+				Config::get('pdf.margin_footer'),     // margin footer
+				Config::get('pdf.orientation')        // L - landscape, P - portrait
 			);
 
 			$mpdf->SetProtection(array('print'));
 			$mpdf->SetTitle(Config::get('pdf.title'));
 			$mpdf->SetAuthor(Config::get('pdf.author'));
 			$mpdf->SetWatermarkText(Config::get('pdf.watermark'));
-			$mpdf->SetDisplayMode(Config::get('pdf.displayMode'));
-			$mpdf->showWatermarkText = Config::get('pdf.showWatermark');
-			$mpdf->watermark_font = Config::get('pdf.watermarkFont');
-			$mpdf->watermarkTextAlpha = Config::get('pdf.watermarkTextAlpha');
+			$mpdf->SetDisplayMode(Config::get('pdf.display_mode'));
+			$mpdf->showWatermarkText = Config::get('pdf.show_watermark');
+			$mpdf->watermark_font = Config::get('pdf.watermark_font');
+			$mpdf->watermarkTextAlpha = Config::get('pdf.watermark_text_alpha');
 
 			return new PdfWrapper($mpdf);
 		});
