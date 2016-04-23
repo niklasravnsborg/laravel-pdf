@@ -57,6 +57,31 @@ return [
 ];
 ```
 
+## Headers and Footers
+
+If you want to have headers and footers that appear on every page, add them to your `<body>` tag like this:
+
+```
+<htmlpageheader name="page-header">
+	Your Header Content
+</htmlpageheader>
+
+<htmlpagefooter name="page-footer">
+	Your Footer Content
+</htmlpagefooter>
+```
+
+Now you just need to define them with the name attribute in your CSS:
+
+```
+@page {
+	header: page-header;
+	footer: page-footer;
+}
+```
+
+Inside of headers and footers `{PAGENO}` can be used to display the page number.
+
 ## License
 
 Laravel PDF is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
