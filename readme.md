@@ -13,14 +13,14 @@ composer require niklasravnsborg/laravel-pdf
 
 To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
 
-```
+```php
 'providers' => [
 	// ...
 	niklasravnsborg\LaravelPdf\PdfServiceProvider::class
 ]
 ```
 
-```
+```php
 'aliases' => [
 	// ...
 	'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
@@ -32,7 +32,7 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 
 You can use a custom file to overwrite the default configuration. Just create `config/pdf.php` and add this:
 
-```
+```php
 <?php
 
 return [
@@ -61,7 +61,7 @@ return [
 
 If you want to have headers and footers that appear on every page, add them to your `<body>` tag like this:
 
-```
+```html
 <htmlpageheader name="page-header">
 	Your Header Content
 </htmlpageheader>
@@ -73,7 +73,7 @@ If you want to have headers and footers that appear on every page, add them to y
 
 Now you just need to define them with the name attribute in your CSS:
 
-```
+```css
 @page {
 	header: page-header;
 	footer: page-footer;
@@ -88,25 +88,31 @@ By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/
 
 ## Custom Fonts
 
-With `custom_font_data` in your configuration file (`/config/pdf.php`) you can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `/resources/fonts/`.
+You can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `/resources/fonts/`. Add this to your configuration file (`/config/pdf.php`):
 
-```
-'custom_font_path' => base_path('/resources/fonts/'), // don't forget the trailing slash!
-'custom_font_data' => [
-	'examplefont' => [
-		'R'  => 'ExampleFont-Regular.ttf',    // regular font
-		'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
-		'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
-		'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
+```php
+<?php
+
+return [
+	'custom_font_path' => base_path('/resources/fonts/'), // don't forget the trailing slash!
+	'custom_font_data' => [
+		'examplefont' => [
+			'R'  => 'ExampleFont-Regular.ttf',    // regular font
+			'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
+			'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
+			'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
+		]
+		// ...add as many as you want.
 	]
-	// ...add as many as you want.
-]
+];
 ```
 
 Now you can use the font in CSS:
 
-```
-font-family: 'examplefont', sans-serif;
+```css
+body {
+	font-family: 'examplefont', sans-serif;
+}
 ```
 
 ## License
