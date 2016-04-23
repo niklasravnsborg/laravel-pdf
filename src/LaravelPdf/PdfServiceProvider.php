@@ -28,6 +28,10 @@ class PdfServiceProvider extends BaseServiceProvider {
 
 		$this->app->bind('mpdf.wrapper', function($app, $cfg) {
 
+			if (Config::has('pdf.custom_font_path') && Config::has('pdf.custom_font_data')) {
+				define(_MPDF_SYSTEM_TTFONTS_CONFIG, __DIR__ . '/../mpdf_ttfonts_config.php');
+			}
+
 			$mpdf = new \mPDF(
 				Config::get('pdf.mode'),              // mode - default ''
 				Config::get('pdf.format'),            // format - A4, for example, default ''

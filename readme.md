@@ -82,6 +82,33 @@ Now you just need to define them with the name attribute in your CSS:
 
 Inside of headers and footers `{PAGENO}` can be used to display the page number.
 
+## Included Fonts
+
+By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
+
+## Custom Fonts
+
+With `custom_font_data` in your configuration file (`/config/pdf.php`) you can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `/resources/fonts/`.
+
+```
+'custom_font_path' => base_path('/resources/fonts/'), // don't forget the trailing slash!
+'custom_font_data' => [
+	'examplefont' => [
+		'R'  => 'ExampleFont-Regular.ttf',    // regular font
+		'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
+		'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
+		'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
+	]
+	// ...add as many as you want.
+]
+```
+
+Now you can use the font in CSS:
+
+```
+font-family: 'examplefont', sans-serif;
+```
+
 ## License
 
 Laravel PDF is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
