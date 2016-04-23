@@ -5,7 +5,7 @@ namespace niklasravnsborg\LaravelPdf;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-include base_path('vendor/mpdf/mpdf/mpdf.php');
+include base_path('vendor/niklasravnsborg/mpdf/mpdf.php');
 
 class PdfServiceProvider extends BaseServiceProvider {
 

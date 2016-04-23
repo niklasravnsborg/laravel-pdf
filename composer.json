@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
-        "mpdf/mpdf": "^6.1.0-beta"
+        "niklasravnsborg/mpdf": "^6.1"
     },
     "autoload": {
         "psr-4": {"niklasravnsborg\\LaravelPdf\\": "src/LaravelPdf"}
