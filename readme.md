@@ -27,6 +27,22 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ]
 ```
 
+## Basic Usage
+
+To use Laravel PDF add something like this to one of your controllers. You can pass data to a view in `/resources/views`.
+
+```php
+use PDF;
+
+function generate_pdf() {
+	$data = [
+		'foo' => 'bar'
+	];
+	$pdf = PDF::loadView('pdf.document', $data);
+	return $pdf->stream('document.pdf');
+}
+```
+
 
 ## Config
 
