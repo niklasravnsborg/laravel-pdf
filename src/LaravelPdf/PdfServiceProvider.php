@@ -46,7 +46,6 @@ class PdfServiceProvider extends BaseServiceProvider {
 				Config::get('pdf.orientation')        // L - landscape, P - portrait
 			);
 
-			$mpdf->SetProtection(array('print'));
 			$mpdf->SetTitle(Config::get('pdf.title'));
 			$mpdf->SetAuthor(Config::get('pdf.author'));
 			$mpdf->SetWatermarkText(Config::get('pdf.watermark'));
