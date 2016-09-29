@@ -55,7 +55,7 @@ function generate_pdf() {
 		'foo' => 'bar'
 	];
 	$pdf = PDF::loadView('pdf.document', $data);
-	$pdf->protection(['copy','print'],'','pass');
+	$pdf->SetProtection(['copy','print'],'','pass');
 	return $pdf->stream('document.pdf');
 }
 ```
