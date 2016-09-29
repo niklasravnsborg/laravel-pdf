@@ -42,7 +42,23 @@ function generate_pdf() {
 	return $pdf->stream('document.pdf');
 }
 ```
+## Set Protection
+To set protection you must pass a array with permissons, user password and a owner password:
+ -There are a fews permissos: copy, print, modify, annot-forms, fill-forms, extract, assemble, print-highres, 
+ -If you set user password blank it won't requeste any password.
+ 
+ ```php
+use PDF;
 
+function generate_pdf() {
+	$data = [
+		'foo' => 'bar'
+	];
+	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf->protection(['copy','print'],'','pass');
+	return $pdf->stream('document.pdf');
+}
+```
 
 ## Config
 
