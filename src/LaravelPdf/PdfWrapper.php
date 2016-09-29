@@ -124,6 +124,21 @@ class PdfWrapper {
 		return $this->mpdf->Output($filename, 'I');
 	}
 
+	/**
+	 * Encrypts and sets the PDF document permissions
+	 *
+	 * @param array $permisson Permissons e.g.: ['copy', 'print']
+	 * @param string $userPassword User password
+	 * @param string $ownerPassword Owner password
+	 *
+	 */
+	public function setProtection($permisson, $userPassword = '', $ownerPassword = '') {
+		if (func_get_args()[2] === NULL) {
+			$ownerPassword = bin2hex(openssl_random_pseudo_bytes(8));
+		};
+		return $this->mpdf->SetProtection($permisson, $userPassword, $ownerPassword);
+	}
+
 	public function __call($name, $arguments){
 		return call_user_func_array(array($this->mpdf, $name), $arguments);
 	}

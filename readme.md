@@ -43,14 +43,11 @@ function generate_pdf() {
 }
 ```
 
-
 ## Config
 
 You can use a custom file to overwrite the default configuration. Just create `config/pdf.php` and add this:
 
 ```php
-<?php
-
 return [
 	'mode'               => '',
 	'format'             => 'A4',
@@ -107,8 +104,6 @@ By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/
 You can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `/resources/fonts/`. Add this to your configuration file (`/config/pdf.php`):
 
 ```php
-<?php
-
 return [
 	'custom_font_path' => base_path('/resources/fonts/'), // don't forget the trailing slash!
 	'custom_font_data' => [
@@ -130,6 +125,29 @@ body {
 	font-family: 'examplefont', sans-serif;
 }
 ```
+
+## Set Protection
+
+To set protection, you just call the `SetProtection()` method and pass an array with permissions, an user password and an owner password.
+
+The passwords are optional.
+
+There are a fews permissions: `'copy'`, `'print'`, `'modify'`, `'annot-forms'`, `'fill-forms'`, `'extract'`, `'assemble'`, `'print-highres'`.
+
+```php
+use PDF;
+
+function generate_pdf() {
+	$data = [
+		'foo' => 'bar'
+	];
+	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf->SetProtection(['copy', 'print'], '', 'pass');
+	return $pdf->stream('document.pdf');
+}
+```
+
+Find more information to `SetProtection()` here: https://mpdf.github.io/reference/mpdf-functions/setprotection.html
 
 ## License
 
