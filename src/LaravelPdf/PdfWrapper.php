@@ -139,6 +139,32 @@ class PdfWrapper {
 		return $this->mpdf->SetProtection($permisson, $userPassword, $ownerPassword);
 	}
 
+	/**
+	 * Sets the watermark image for the PDF
+	 *
+	 * @param string $src Image file
+	 * @param string $alpha Transparency of the image
+	 * @param integer or array $size Defines the size of the watermark.
+	 * @param array $position Array of $x and $y defines the position of the watermark.
+	 *
+	 */
+	public function setWatermarkImage($src, $alpha = 0.2, $size = 'D', $position = 'P') {
+		$this->mpdf->showWatermarkImage = true;
+		return $this->mpdf->SetWatermarkImage($src);
+	}
+
+	/**
+	 * Sets a watermark text for the PDF
+	 *
+	 * @param string $text Text for watermark
+	 * @param string $alpha Transparency of the text
+	 *
+	 */
+	public function setWatermarkText($text, $alpha = 0.2) {
+		$this->mpdf->showWatermarkText = true;
+		return $this->mpdf->SetWatermarkText($text);
+	}
+
 	public function __call($name, $arguments){
 		return call_user_func_array(array($this->mpdf, $name), $arguments);
 	}
