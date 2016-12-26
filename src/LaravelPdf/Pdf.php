@@ -13,35 +13,48 @@ use mPDF;
  */
 class Pdf {
 
-	public function __construct($html = '')
+	protected $config = [];
+
+	public function __construct($html = '', $config = [])
 	{
+		$this->config = $config;
+
 		if (Config::has('pdf.custom_font_path') && Config::has('pdf.custom_font_data')) {
 			define(_MPDF_SYSTEM_TTFONTS_CONFIG, __DIR__ . '/../mpdf_ttfonts_config.php');
 		}
 
 		$this->mpdf = new mPDF(
-			Config::get('pdf.mode'),              // mode - default ''
-			Config::get('pdf.format'),            // format - A4, for example, default ''
-			Config::get('pdf.default_font_size'), // font size - default 0
-			Config::get('pdf.default_font'),      // default font family
-			Config::get('pdf.margin_left'),       // margin_left
-			Config::get('pdf.margin_right'),      // margin right
-			Config::get('pdf.margin_top'),        // margin top
-			Config::get('pdf.margin_bottom'),     // margin bottom
-			Config::get('pdf.margin_header'),     // margin header
-			Config::get('pdf.margin_footer'),     // margin footer
-			Config::get('pdf.orientation')        // L - landscape, P - portrait
+			$this->getConfig('mode'),              // mode - default ''
+			$this->getConfig('format'),            // format - A4, for example, default ''
+			$this->getConfig('default_font_size'), // font size - default 0
+			$this->getConfig('default_font'),      // default font family
+			$this->getConfig('margin_left'),       // margin_left
+			$this->getConfig('margin_right'),      // margin right
+			$this->getConfig('margin_top'),        // margin top
+			$this->getConfig('margin_bottom'),     // margin bottom
+			$this->getConfig('margin_header'),     // margin header
+			$this->getConfig('margin_footer'),     // margin footer
+			$this->getConfig('orientation')        // L - landscape, P - portrait
 		);
 
-		$this->mpdf->SetTitle(Config::get('pdf.title'));
-		$this->mpdf->SetAuthor(Config::get('pdf.author'));
-		$this->mpdf->SetWatermarkText(Config::get('pdf.watermark'));
-		$this->mpdf->SetDisplayMode(Config::get('pdf.display_mode'));
-		$this->mpdf->showWatermarkText = Config::get('pdf.show_watermark');
-		$this->mpdf->watermark_font = Config::get('pdf.watermark_font');
-		$this->mpdf->watermarkTextAlpha = Config::get('pdf.watermark_text_alpha');
+		$this->mpdf->SetTitle         ( $this->getConfig('title') );
+		$this->mpdf->SetAuthor        ( $this->getConfig('author') );
+		$this->mpdf->SetWatermarkText ( $this->getConfig('watermark') );
+		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
+
+		$this->mpdf->showWatermarkText  = $this->getConfig('show_watermark');
+		$this->mpdf->watermark_font     = $this->getConfig('watermark_font');
+		$this->mpdf->watermarkTextAlpha = $this->getConfig('watermark_text_alpha');
 
 		$this->mpdf->WriteHTML($html);
+	}
+
+	protected function getConfig($key) {
+		if (isset($this->config[$key])) {
+			return $this->config[$key];
+		} else {
+			return Config::get('pdf.' . $key);
+		}
 	}
 
 	/**
