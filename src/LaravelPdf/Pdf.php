@@ -20,7 +20,7 @@ class Pdf {
 		$this->config = $config;
 
 		if (Config::has('pdf.custom_font_path') && Config::has('pdf.custom_font_data')) {
-			define(_MPDF_SYSTEM_TTFONTS_CONFIG, __DIR__ . '/../mpdf_ttfonts_config.php');
+			define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
 		}
 
 		$this->mpdf = new mPDF(
