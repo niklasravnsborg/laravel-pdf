@@ -87,7 +87,7 @@ class Pdf {
 	public function setWatermarkImage($src, $alpha = 0.2, $size = 'D', $position = 'P')
 	{
 		$this->mpdf->showWatermarkImage = true;
-		return $this->mpdf->SetWatermarkImage($src);
+		return $this->mpdf->SetWatermarkImage($src, $alpha, $size, $position);
 	}
 
 	/**
@@ -101,7 +101,7 @@ class Pdf {
 	public function setWatermarkText($text, $alpha = 0.2)
 	{
 		$this->mpdf->showWatermarkText = true;
-		return $this->mpdf->SetWatermarkText($text);
+		return $this->mpdf->SetWatermarkText($text, $alpha);
 	}
 
 
