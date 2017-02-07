@@ -25,7 +25,7 @@ class PdfServiceProvider extends BaseServiceProvider {
 			__DIR__ . '/../config/pdf.php', 'pdf'
 		);
 
-		$this->app->bind('mpdf.wrapper', function($app, $cfg) {
+		$this->app->bind('mpdf.wrapper', function($app) {
 			return new PdfWrapper();
 		});
 	}
