@@ -70,6 +70,15 @@ return [
 ];
 ```
 
+To override this configuration on a per-file basis use the fourth parameter of the initializing call like this:
+
+```
+PDF::loadView('pdf', $data, [], [
+  'title' => 'Another Title',
+  'margin_top' => 0
+])->save($pdfFilePath);
+```
+
 ## Headers and Footers
 
 If you want to have headers and footers that appear on every page, add them to your `<body>` tag like this:
