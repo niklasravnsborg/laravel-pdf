@@ -57,6 +57,15 @@ class Pdf {
 			return Config::get('pdf.' . $key);
 		}
 	}
+	
+	/**
+	 * Get instance mpdf
+	 * @return static
+	 */
+	public function getMpdf()
+	{
+		return $this->mpdf;
+	}
 
 	/**
 	 * Encrypts and sets the PDF document permissions
