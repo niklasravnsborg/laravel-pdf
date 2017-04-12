@@ -12,7 +12,8 @@ use Mpdf\Mpdf as mPDF;
  * @author Niklas Ravnsborg-Gjertsen
  */
 class Pdf {
-
+	
+	protected $mpdf;
 	protected $config = [];
 
 	public function __construct($html = '', $config = [])
