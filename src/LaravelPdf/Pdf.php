@@ -3,7 +3,7 @@
 namespace niklasravnsborg\LaravelPdf;
 
 use Config;
-use Mpdf as mPDF;
+use Mpdf\Mpdf as mPDF;
 
 /**
  * Laravel PDF: mPDF wrapper for Laravel 5
