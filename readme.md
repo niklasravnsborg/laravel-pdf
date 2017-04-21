@@ -8,7 +8,7 @@
 Require this package in your `composer.json` or install it by running:
 
 ```
-composer require niklasravnsborg/laravel-pdf
+composer require meneses/laravel-pdf
 ```
 
 To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
