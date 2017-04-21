@@ -8,7 +8,7 @@
 Require this package in your `composer.json` or install it by running:
 
 ```
-composer require meneses/laravel-pdf
+composer require niklasravnsborg/laravel-pdf
 ```
 
 To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
@@ -16,14 +16,14 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ```php
 'providers' => [
 	// ...
-	meneses\LaravelPdf\PdfServiceProvider::class
+	niklasravnsborg\LaravelPdf\PdfServiceProvider::class
 ]
 ```
 
 ```php
 'aliases' => [
 	// ...
-	'PDF' => meneses\LaravelPdf\Facades\Pdf::class
+	'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
 ]
 ```
 
@@ -157,13 +157,6 @@ function generate_pdf() {
 ```
 
 Find more information to `SetProtection()` here: https://mpdf.github.io/reference/mpdf-functions/setprotection.html
-
-## Get instance your mpdf
-
-```php
-$pdf = PDF::loadView('pdf.document', $data);
-$pdf->getMpdf()->AddPage(...);
-```
 
 ## License
 
