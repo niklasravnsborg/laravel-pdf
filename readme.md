@@ -16,14 +16,14 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ```php
 'providers' => [
 	// ...
-	niklasravnsborg\LaravelPdf\PdfServiceProvider::class
+	meneses\LaravelPdf\PdfServiceProvider::class
 ]
 ```
 
 ```php
 'aliases' => [
 	// ...
-	'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
+	'PDF' => meneses\LaravelPdf\Facades\Pdf::class
 ]
 ```
 
@@ -157,6 +157,13 @@ function generate_pdf() {
 ```
 
 Find more information to `SetProtection()` here: https://mpdf.github.io/reference/mpdf-functions/setprotection.html
+
+## Get instance your mpdf
+
+```php
+$pdf = PDF::loadView('pdf.document', $data);
+$pdf->getMpdf()->AddPage(...);
+```
 
 ## License
 
