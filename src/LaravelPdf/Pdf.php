@@ -3,7 +3,7 @@
 namespace niklasravnsborg\LaravelPdf;
 
 use Config;
-use mPDF;
+use Mpdf\Mpdf as mPDF;
 
 /**
  * Laravel PDF: mPDF wrapper for Laravel 5
@@ -12,7 +12,8 @@ use mPDF;
  * @author Niklas Ravnsborg-Gjertsen
  */
 class Pdf {
-
+	
+	protected $mpdf;
 	protected $config = [];
 
 	public function __construct($html = '', $config = [])
@@ -23,19 +24,19 @@ class Pdf {
 			define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
 		}
 
-		$this->mpdf = new mPDF(
-			$this->getConfig('mode'),              // mode - default ''
-			$this->getConfig('format'),            // format - A4, for example, default ''
-			$this->getConfig('default_font_size'), // font size - default 0
-			$this->getConfig('default_font'),      // default font family
-			$this->getConfig('margin_left'),       // margin_left
-			$this->getConfig('margin_right'),      // margin right
-			$this->getConfig('margin_top'),        // margin top
-			$this->getConfig('margin_bottom'),     // margin bottom
-			$this->getConfig('margin_header'),     // margin header
-			$this->getConfig('margin_footer'),     // margin footer
-			$this->getConfig('orientation')        // L - landscape, P - portrait
-		);
+		$this->mpdf = new mPDF([
+			'mode' => $this->getConfig('mode'),              // mode - default ''
+			'format' => $this->getConfig('format'),            // format - A4, for example, default ''
+			'default_font_size' => $this->getConfig('default_font_size'), // font size - default 0
+			'default_font' => $this->getConfig('default_font'),      // default font family
+			'margin_left' => $this->getConfig('margin_left'),       // margin_left
+			'margin_right' => $this->getConfig('margin_right'),      // margin right
+			'margin_top' => $this->getConfig('margin_top'),        // margin top
+			'margin_bottom' => $this->getConfig('margin_bottom'),     // margin bottom
+			'margin_header' => $this->getConfig('margin_header'),     // margin header
+			'margin_footer' => $this->getConfig('margin_footer'),     // margin footer
+			'orientation' => $this->getConfig('orientation')        // L - landscape, P - portrait
+		]);
 
 		$this->mpdf->SetTitle         ( $this->getConfig('title') );
 		$this->mpdf->SetAuthor        ( $this->getConfig('author') );
@@ -55,6 +56,15 @@ class Pdf {
 		} else {
 			return Config::get('pdf.' . $key);
 		}
+	}
+	
+	/**
+	 * Get instance mpdf
+	 * @return static
+	 */
+	public function getMpdf()
+	{
+		return $this->mpdf;
 	}
 
 	/**
