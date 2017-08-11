@@ -22,7 +22,7 @@ class PdfServiceProvider extends BaseServiceProvider {
 	public function register()
 	{
 		$this->mergeConfigFrom(
-			__DIR__ . '/../config/pdf.php', 'pdf'
+			config_path('pdf.php'), 'pdf'
 		);
 
 		$this->app->bind('mpdf.wrapper', function($app) {
