@@ -37,6 +37,11 @@ class Pdf {
 			$this->getConfig('orientation')        // L - landscape, P - portrait
 		);
 
+        if ($this->getConfig('template')) {
+            $this->mpdf->SetImportUse();
+            $this->mpdf->SetDocTemplate($this->getConfig('template'), true);
+        }
+
 		$this->mpdf->SetTitle         ( $this->getConfig('title') );
 		$this->mpdf->SetAuthor        ( $this->getConfig('author') );
 		$this->mpdf->SetWatermarkText ( $this->getConfig('watermark') );
