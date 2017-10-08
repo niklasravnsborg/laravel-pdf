@@ -27,6 +27,10 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ]
 ```
 
+Now, you should publish package's config file to your config directory by using following command:
+
+```sh php artisan vendor:publish```
+
 ## Basic Usage
 
 To use Laravel PDF add something like this to one of your controllers. You can pass data to a view in `/resources/views`.
