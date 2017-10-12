@@ -125,11 +125,15 @@ return [
 			'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
 			'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
 			'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
+			//'useOTL' => 0xFF,		      // required for complicated langs like Persian, Arabic and Chinese
+			//'useKashida' => 75,		      // required for complicated langs like Persian, Arabic and Chinese
 		]
 		// ...add as many as you want.
 	]
 ];
 ```
+
+*Note*: If you are using `laravel-pdf` for producing PDF documents in a complicated language (like Persian, Arabic or Chinese) you should have `useOTL` and `useKashida` indexes in your custom font difinition array. If you do not use these indexes, your characters will be shown dispatched and incorrectly in the produced PDF.
 
 Now you can use the font in CSS:
 
