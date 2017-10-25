@@ -66,11 +66,7 @@ return [
 	'orientation'          => 'P',
 	'title'                => 'Laravel mPDF',
 	'author'               => '',
-	'watermark'            => '',
-	'show_watermark'       => false,
-	'watermark_font'       => 'sans-serif',
-	'display_mode'         => 'fullpage',
-	'watermark_text_alpha' => 0.1
+	'display_mode'         => 'fullpage'
 ];
 ```
 
