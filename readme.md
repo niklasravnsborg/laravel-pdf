@@ -53,10 +53,10 @@ function generate_pdf() {
 
 It is also possible to use the following methods on the `pdf` object:
 
-`output()`: Outputs the PDF as a string.
-`save($filename)`: Save the PDF to a file
-`download($filename)`: Make the PDF downloadable by the user
-`stream($filename)`: Return a response with the PDF to show in the browser
+`output()`: Outputs the PDF as a string.  
+`save($filename)`: Save the PDF to a file  
+`download($filename)`: Make the PDF downloadable by the user.  
+`stream($filename)`: Return a response with the PDF to show in the browser.
 
 ## Config
 
@@ -77,8 +77,7 @@ To override this configuration on a per-file basis use the fourth parameter of t
 
 ```php
 PDF::loadView('pdf', $data, [], [
-  'title' => 'Another Title',
-  'margin_top' => 0
+  'format' => 'A5-L'
 ])->save($pdfFilePath);
 ```
 
