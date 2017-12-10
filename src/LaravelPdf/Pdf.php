@@ -27,7 +27,8 @@ class Pdf {
 			'margin_top'           =>   $this->getConfig('margin_top'),        // margin top
 			'margin_bottom'        =>   $this->getConfig('margin_bottom'),     // margin bottom
 			'margin_header'        =>   $this->getConfig('margin_header'),     // margin header
-			'margin_footer'        =>   $this->getConfig('margin_footer')      // margin footer
+			'margin_footer'        =>   $this->getConfig('margin_footer'),     // margin footer
+			'tempDir'              =>   $this->getConfig('tempDir')            // margin footer
 		];
 
 		// Handle custom fonts
