@@ -7,6 +7,6 @@ return [
 	'subject'               => '',
 	'keywords'              => '',
 	'creator'               => 'Laravel Pdf',
-        'display_mode'          => 'fullpage',
-        'tempDir'               => __DIR__ . '../temp/'
+	'display_mode'          => 'fullpage',
+	'tempDir'               => __DIR__ . '../temp/'
 ];
