@@ -8,6 +8,18 @@
         "mpdf/mpdf": "^7.0"
     },
     "autoload": {
-        "psr-4": {"niklasravnsborg\\LaravelPdf\\": "src/LaravelPdf"}
+        "psr-4": {
+            "niklasravnsborg\\LaravelPdf\\": "src/LaravelPdf"
+        }
+    },
+    "extra":
+        "laravel": {
+            "providers": [
+                "niklasravnsborg\\LaravelPdf\\PdfServiceProvider"
+            ],
+            "aliases": {
+                "PDF": "niklasravnsborg\\LaravelPdf\\Facades\\Pdf"
+            }
+        }
     }
 }
