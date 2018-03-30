@@ -12,7 +12,7 @@
             "niklasravnsborg\\LaravelPdf\\": "src/LaravelPdf"
         }
     },
-    "extra":
+    "extra": {
         "laravel": {
             "providers": [
                 "niklasravnsborg\\LaravelPdf\\PdfServiceProvider"
