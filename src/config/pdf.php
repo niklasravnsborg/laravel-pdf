@@ -8,5 +8,8 @@ return [
 	'keywords'              => '',
 	'creator'               => 'Laravel Pdf',
 	'display_mode'          => 'fullpage',
-	'tempDir'               => base_path('../temp/')
+	'tempDir'               => base_path('../temp/'),
+	'mpdf_config' => [
+		// here is your custom mPDF configuration
+	],
 ];
