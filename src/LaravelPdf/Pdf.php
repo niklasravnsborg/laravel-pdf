@@ -46,9 +46,9 @@ class Pdf {
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
 
-        if (isset($this->config['instanceConfigurator']) && is_callable(($this->config['instanceConfigurator']))) {
-            $this->config['instanceConfigurator']($this->mpdf);
-        }
+		if (isset($this->config['instanceConfigurator']) && is_callable(($this->config['instanceConfigurator']))) {
+			$this->config['instanceConfigurator']($this->mpdf);
+		}
 
 		$this->mpdf->WriteHTML($html);
 	}
