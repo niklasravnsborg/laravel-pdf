@@ -83,6 +83,16 @@ PDF::loadView('pdf', $data, [], [
 ])->save($pdfFilePath);
 ```
 
+You can use a callback with the key 'instanceConfigurator' to access mpdf functions:
+```php
+$config = ['instanceConfigurator' => function($mpdf) {
+    $mpdf->SetImportUse();
+    $mpdf->SetDocTemplate(/path/example.pdf, true);
+}]
+ 
+PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
+```
+
 ## Headers and Footers
 
 If you want to have headers and footers that appear on every page, add them to your `<body>` tag like this:
