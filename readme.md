@@ -62,7 +62,7 @@ It is also possible to use the following methods on the `pdf` object:
 
 ## Config
 
-You can use a custom file to overwrite the default configuration. Just create `config/pdf.php` and add this:
+If you have published config file, you can change the default settings in `confif/pdf.php` file:
 
 ```php
 return [
