@@ -62,7 +62,7 @@ It is also possible to use the following methods on the `pdf` object:
 
 ## Config
 
-If you have published config file, you can change the default settings in `confif/pdf.php` file:
+If you have published config file, you can change the default settings in `config/pdf.php` file:
 
 ```php
 return [
