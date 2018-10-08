@@ -119,8 +119,8 @@ You can use your own fonts in the generated PDFs. The TTF files have to be locat
 ```php
 return [
 	// ...
-	'font_path' => base_path('resources/fonts/'),
-	'font_data' => [
+	'custom_font_path' => base_path('resources/fonts/'),
+	'custom_font_data' => [
 		'examplefont' => [
 			'R'  => 'ExampleFont-Regular.ttf',    // regular font
 			'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
