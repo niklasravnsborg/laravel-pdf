@@ -28,7 +28,8 @@ class Pdf {
 			'margin_bottom'        =>   $this->getConfig('margin_bottom'),     // margin bottom
 			'margin_header'        =>   $this->getConfig('margin_header'),     // margin header
 			'margin_footer'        =>   $this->getConfig('margin_footer'),     // margin footer
-			'tempDir'              =>   $this->getConfig('tempDir')            // margin footer
+			'tempDir'              =>   $this->getConfig('tempDir'),           // margin footer
+			'showWatermarkText'    =>   $this->getConfig('showWatermarkText'), // showWatermarkText            // margin footer
 		];
 
 		// Handle custom fonts
@@ -45,6 +46,7 @@ class Pdf {
 		$this->mpdf->SetSubject       ( $this->getConfig('subject') );
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
+		$this->mpdf->SetWatermarkText ( $this->getConfig('water_mark_text') );
 
 		$this->mpdf->WriteHTML($html);
 	}

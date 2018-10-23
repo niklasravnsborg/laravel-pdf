@@ -107,7 +107,13 @@ Now you just need to define them with the name attribute in your CSS:
 ```
 
 Inside of headers and footers `{PAGENO}` can be used to display the page number.
+## WaterMark Text
 
+If you want to add watermark text to the pdf that you are generating from pdf, you need to pass the following config parameters along with the loadHTML function.
+
+```php
+$pdf = PDF::loadHTML($content, [ 'showWatermarkText' => true, 'water_mark_text' => 'DRAFT']);
+```
 ## Included Fonts
 
 By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
