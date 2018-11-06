@@ -46,7 +46,9 @@ class Pdf {
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
 
-		$this->mpdf->WriteHTML($html);
+	        $parts = explode('>', $html);
+	        foreach($parts as $part)
+		      $this->mpdf->WriteHTML($part.'>');
 	}
 
 	protected function getConfig($key)
