@@ -46,9 +46,35 @@ class Pdf {
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
 
-	        $parts = explode('>', $html);
-	        foreach($parts as $part)
-		      $this->mpdf->WriteHTML($part.'>');
+		$this->writeHTMLInChunks($html);
+	}
+
+	protected function writeHTMLInChunks($html)
+	{
+		$previous_cut = 0;
+		$html_length = strlen($html);
+		for($i = 0; $i < $html_length; ++$i)
+		{
+			if ($html[$i] == '<' && $i + 1 < $html_length && $html[$i+1] == '/')
+			{
+				$ending_char = strpos($html, '>', $i);
+				$ending_tag = substr($html, $i, $ending_char - $i + 1);
+				if (preg_match('/^<\/[^>< ]*>/', $ending_tag))
+				{
+					$html_chunk = substr($html, $previous_cut, $ending_char - $previous_cut + 1);
+
+					$this->mpdf->WriteHTML($html_chunk);
+
+					$previous_cut = $i + strlen($ending_tag);
+				}
+			}
+		}
+		if ($previous_cut < $html_length - 1)
+		{
+			$html_chunk = substr($html, $previous_cut, strlen($html) - $previous_cut);
+
+			$this->mpdf->WriteHTML($html_chunk);
+		}
 	}
 
 	protected function getConfig($key)
