@@ -45,6 +45,10 @@ class Pdf {
 		$this->mpdf->SetSubject       ( $this->getConfig('subject') );
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
+    
+    if (isset($this->config['instanceConfigurator']) && is_callable(($this->config['instanceConfigurator']))) {
+			$this->config['instanceConfigurator']($this->mpdf);
+		}
 
 		$this->writeHTMLInChunks($html);
 	}
@@ -75,6 +79,8 @@ class Pdf {
 
 			$this->mpdf->WriteHTML($html_chunk);
 		}
+
+		$this->mpdf->WriteHTML($html);
 	}
 
 	protected function getConfig($key)
