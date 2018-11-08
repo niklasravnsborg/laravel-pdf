@@ -46,6 +46,13 @@ class Pdf {
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
 
+		if (Config::has('pdf.watermark_image')) {
+			call_user_func_array(array($this, 'setWatermarkImage'), $this->getConfig('watermark_image'));
+		}
+		if (Config::has('pdf.watermark_text')) {
+			call_user_func_array(array($this, 'setWatermarkText'), $this->getConfig('watermark_text'));
+		}
+
 		$this->mpdf->WriteHTML($html);
 	}
 
@@ -133,5 +140,19 @@ class Pdf {
 	public function stream($filename = 'document.pdf')
 	{
 		return $this->mpdf->Output($filename, 'I');
+	}
+
+	private function setWatermarkImage($src, $alpha = 0.2, $size = 'D', $position = 'P')
+	{
+		$this->mpdf->showWatermarkImage = true;
+		return $this->mpdf->SetWatermarkImage($src);
+		return $this->mpdf->SetWatermarkImage($src, $alpha, $size, $position);
+	}
+
+	private function setWatermarkText($text, $alpha = 0.2)
+	{
+		$this->mpdf->showWatermarkText = true;
+		return $this->mpdf->SetWatermarkText($text);
+		return $this->mpdf->SetWatermarkText($text, $alpha);
 	}
 }
