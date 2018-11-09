@@ -178,6 +178,15 @@ function generate_pdf() {
 
 Find more information to `SetProtection()` here: https://mpdf.github.io/reference/mpdf-functions/setprotection.html
 
+## Testing
+
+To use the testing suite, you need some extensions and binaries for your local PHP. On macOS, you can install them like this:
+
+```
+pecl install imagick
+brew install ghostscript
+```
+
 ## License
 
 Laravel PDF is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
