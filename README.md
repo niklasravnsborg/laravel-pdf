@@ -46,7 +46,7 @@ function generate_pdf() {
 	$data = [
 		'foo' => 'bar'
 	];
-	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf = PDF::loadView('pdf.document', ['data' => $data]);
 	return $pdf->stream('document.pdf');
 }
 ```
@@ -78,7 +78,7 @@ return [
 To override this configuration on a per-file basis use the fourth parameter of the initializing call like this:
 
 ```php
-PDF::loadView('pdf', $data, [], [
+PDF::loadView('pdf', ['data' => $data], [], [
   'format' => 'A5-L'
 ])->save($pdfFilePath);
 ```
@@ -90,7 +90,7 @@ $config = ['instanceConfigurator' => function($mpdf) {
     $mpdf->SetDocTemplate(/path/example.pdf, true);
 }]
  
-PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
+PDF::loadView('pdf', ['data' => $data], [], $config)->save($pdfFilePath);
 ```
 
 ## Headers and Footers
@@ -170,7 +170,7 @@ function generate_pdf() {
 	$data = [
 		'foo' => 'bar'
 	];
-	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf = PDF::loadView('pdf.document', ['data' => $data]);
 	$pdf->SetProtection(['copy', 'print'], '', 'pass');
 	return $pdf->stream('document.pdf');
 }
