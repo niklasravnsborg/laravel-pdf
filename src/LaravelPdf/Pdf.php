@@ -13,22 +13,26 @@ use Mpdf;
  */
 class Pdf {
 
+	protected $html = '';
 	protected $config = [];
 
 	public function __construct($html = '', $config = [])
 	{
+		$this->html = $html;
 		$this->config = $config;
 
 		$mpdf_config = [
-			'mode'                 =>   $this->getConfig('mode'),              // mode - default ''
-			'format'               =>   $this->getConfig('format'),            // format - A4, for example, default ''
-			'margin_left'          =>   $this->getConfig('margin_left'),       // margin_left
-			'margin_right'         =>   $this->getConfig('margin_right'),      // margin right
-			'margin_top'           =>   $this->getConfig('margin_top'),        // margin top
-			'margin_bottom'        =>   $this->getConfig('margin_bottom'),     // margin bottom
-			'margin_header'        =>   $this->getConfig('margin_header'),     // margin header
-			'margin_footer'        =>   $this->getConfig('margin_footer'),     // margin footer
-			'tempDir'              =>   $this->getConfig('tempDir')            // margin footer
+			'mode'              => $this->getConfig('mode'),              // Mode of the document.
+			'format'            => $this->getConfig('format'),            // Can be specified either as a pre-defined page size, or as an array of width and height in millimetres
+			'default_font_size' => $this->getConfig('default_font_size'), // Sets the default document font size in points (pt).
+			'default_font'      => $this->getConfig('default_font'),      // Sets the default font-family for the new document.
+			'margin_left'       => $this->getConfig('margin_left'),       // Set the page margins for the new document.
+			'margin_right'      => $this->getConfig('margin_right'),      // Set the page margins for the new document.
+			'margin_top'        => $this->getConfig('margin_top'),        // Set the page margins for the new document.
+			'margin_bottom'     => $this->getConfig('margin_bottom'),     // Set the page margins for the new document.
+			'margin_header'     => $this->getConfig('margin_header'),     // Set the page margins for the new document.
+			'margin_footer'     => $this->getConfig('margin_footer'),     // Set the page margins for the new document.
+			'tempDir'           => $this->getConfig('tempDir')            // temporary directory
 		];
 
 		// Handle custom fonts
@@ -50,7 +54,7 @@ class Pdf {
 			$this->config['instanceConfigurator']($this->mpdf);
 		}
 
-		$this->mpdf->WriteHTML($html);
+		$this->mpdf->WriteHTML($this->html);
 	}
 
 	protected function getConfig($key)
@@ -137,5 +141,16 @@ class Pdf {
 	public function stream($filename = 'document.pdf')
 	{
 		return $this->mpdf->Output($filename, 'I');
+	}
+
+	/**
+	 * Return the rendered view as an HTML string to show in the browser.
+	 * Useful for debugging the HTML code to see what it looks like.
+	 * 
+	 * @return string
+	 */
+	public function view()
+	{
+		return $this->html;
 	}
 }
