@@ -21,15 +21,19 @@ class Pdf {
 		$this->html = $html;
 		$this->config = $config;
 
+		// @see https://mpdf.github.io/reference/mpdf-functions/construct.html
 		$mpdf_config = [
 			'mode'              => $this->getConfig('mode'),              // Mode of the document.
 			'format'            => $this->getConfig('format'),            // Can be specified either as a pre-defined page size, or as an array of width and height in millimetres
+			'default_font_size' => $this->getConfig('default_font_size'), // Sets the default document font size in points (pt).
+			'default_font'      => $this->getConfig('default_font'),      // Sets the default font-family for the new document.
 			'margin_left'       => $this->getConfig('margin_left'),       // Set the page margins for the new document.
 			'margin_right'      => $this->getConfig('margin_right'),      // Set the page margins for the new document.
 			'margin_top'        => $this->getConfig('margin_top'),        // Set the page margins for the new document.
 			'margin_bottom'     => $this->getConfig('margin_bottom'),     // Set the page margins for the new document.
 			'margin_header'     => $this->getConfig('margin_header'),     // Set the page margins for the new document.
 			'margin_footer'     => $this->getConfig('margin_footer'),     // Set the page margins for the new document.
+			'orientation'       => $this->getConfig('orientation'),       // This attribute specifies the default page orientation of the new document if format is defined as an array. This value will be ignored if format is a string value.
 			'tempDir'           => $this->getConfig('tempDir')            // temporary directory
 		];
 
