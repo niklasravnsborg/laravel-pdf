@@ -25,7 +25,7 @@ class PdfWrapper {
 	 */
 	public function loadFile($file, $config = [])
 	{
-		return new Pdf(File::get($file), $config);
+		return new Pdf(file($file), $config);
 	}
 
 	/**
