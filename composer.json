@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=7.0",
-        "mpdf/mpdf": "^7.0"
+        "mpdf/mpdf": "^8.0"
     },
     "autoload": {
         "psr-4": {
