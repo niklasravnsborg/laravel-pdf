@@ -183,8 +183,8 @@ Find more information to `SetProtection()` here: https://mpdf.github.io/referenc
 To use the testing suite, you need some extensions and binaries for your local PHP. On macOS, you can install them like this:
 
 ```
+brew install imagemagick ghostscript
 pecl install imagick
-brew install ghostscript
 ```
 
 ## License
