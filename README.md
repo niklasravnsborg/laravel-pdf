@@ -155,6 +155,17 @@ body {
 }
 ```
 
+## Custom Styles
+You can use your own styles in the generated PDFs. The css file have to be located in one folder, e.g. `/public/css/`. Add this to your configuration file (`/config/pdf.php`):
+
+```php
+return [
+	...
+    	'defaultCssFile' => base_path('public/css/pdf.css'),
+    	...
+];
+```
+
 ## Set Protection
 
 To set protection, you just call the `SetProtection()` method and pass an array with permissions, an user password and an owner password.
