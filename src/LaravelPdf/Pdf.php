@@ -50,6 +50,15 @@ class Pdf {
 		$this->mpdf->SetKeywords      ( $this->getConfig('keywords') );
 		$this->mpdf->SetDisplayMode   ( $this->getConfig('display_mode') );
 
+		if (!empty($this->getConfig('pdf_a'))) {
+			$this->mpdf->PDFA = $this->getConfig('pdf_a');           // Set the flag whether you want to use the pdfA-1b format
+			$this->mpdf->PDFAauto = $this->getConfig('pdf_a_auto');  // Overrides warnings making changes when possible to force PDFA1-b compliance;
+		}
+
+		if (!empty($this->getConfig('icc_profile_path'))) {
+			$this->mpdf->ICCProfile = $this->getConfig('icc_profile_path'); // Specify ICC colour profile
+		}
+
 		if (isset($this->config['instanceConfigurator']) && is_callable(($this->config['instanceConfigurator']))) {
 			$this->config['instanceConfigurator']($this->mpdf);
 		}
