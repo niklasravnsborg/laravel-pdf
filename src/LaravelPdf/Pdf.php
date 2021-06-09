@@ -32,7 +32,9 @@ class Pdf {
 			'margin_header'     => $this->getConfig('margin_header'),     // Set the page margins for the new document.
 			'margin_footer'     => $this->getConfig('margin_footer'),     // Set the page margins for the new document.
 			'orientation'       => $this->getConfig('orientation'),       // This attribute specifies the default page orientation of the new document if format is defined as an array. This value will be ignored if format is a string value.
-			'tempDir'           => $this->getConfig('tempDir')            // temporary directory
+			'tempDir'           => $this->getConfig('tempDir'),           // temporary directory
+			'dpi'               => $this->getConfig('dpi'),               // dpi
+			'img_dpi'           => $this->getConfig('img_dpi')            // img_dpi
 		];
 
 		// Handle custom fonts
