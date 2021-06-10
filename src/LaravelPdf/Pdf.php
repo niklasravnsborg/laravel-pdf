@@ -15,6 +15,11 @@ class Pdf {
 
 	protected $config = [];
 
+	/**
+	 * @var Mpdf\Mpdf
+	 */
+	public $mpdf;
+
 	public function __construct($html = '', $config = [])
 	{
 		$this->config = $config;
