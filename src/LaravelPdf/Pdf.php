@@ -13,10 +13,12 @@ use Mpdf;
  */
 class Pdf {
 
+	protected $html = '';
 	protected $config = [];
 
 	public function __construct($html = '', $config = [])
 	{
+		$this->html = $html;
 		$this->config = $config;
 
 		// @see https://mpdf.github.io/reference/mpdf-functions/construct.html
@@ -63,7 +65,7 @@ class Pdf {
 			$this->config['instanceConfigurator']($this->mpdf);
 		}
 
-		$this->mpdf->WriteHTML($html);
+		$this->mpdf->WriteHTML($this->html);
 	}
 
 	protected function getConfig($key)
@@ -150,5 +152,16 @@ class Pdf {
 	public function stream($filename = 'document.pdf')
 	{
 		return $this->mpdf->Output($filename, 'I');
+	}
+
+	/**
+	 * Return the rendered view as an HTML string to show in the browser.
+	 * Useful for debugging the HTML code to see what it looks like.
+	 * 
+	 * @return string
+	 */
+	public function view()
+	{
+		return $this->html;
 	}
 }
