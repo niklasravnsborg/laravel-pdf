@@ -2,7 +2,6 @@
 
 namespace niklasravnsborg\LaravelPdf;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class PdfServiceProvider extends BaseServiceProvider {
@@ -23,7 +22,7 @@ class PdfServiceProvider extends BaseServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-            	__DIR__ . '/../config/pdf.php' => config_path('pdf.php'),
+            	__DIR__ . '/../config/pdf.php' => app()->basePath('config/pdf.php'),
         	]);
     	}
 	
@@ -38,7 +37,7 @@ class PdfServiceProvider extends BaseServiceProvider {
 			__DIR__ . '/../config/pdf.php', 'pdf'
 		);
 
-		$this->app->bind('mpdf.wrapper', function($app) {
+		app()->bind('mpdf.wrapper', function($app) {
 			return new PdfWrapper();
 		});
 	}

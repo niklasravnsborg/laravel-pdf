@@ -1,7 +1,8 @@
 {
-    "name": "niklasravnsborg/laravel-pdf",
+    "name": "kiasaty/lumen-pdf",
     "description": "Generate PDFs in Laravel with this mPDF wrapper.",
     "keywords": ["mpdf", "pdf", "laravel"],
+    "homepage": "https://github.com/kiasaty/lumen-pdf",
     "license": "MIT",
     "scripts": {
         "test": "phpunit --colors=always"
