@@ -32,7 +32,7 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 Now, you should publish package's config file to your config directory by using following command:
 
 ```
-php artisan vendor:publish
+php artisan vendor:publish --provider="niklasravnsborg\LaravelPdf\PdfServiceProvider"
 ```
 
 ## Basic Usage
