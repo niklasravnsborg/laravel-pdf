@@ -7,7 +7,7 @@
         "test": "phpunit --colors=always"
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.0|^7.0|^8.0",
         "mpdf/mpdf": "^8.0"
     },
     "autoload": {
