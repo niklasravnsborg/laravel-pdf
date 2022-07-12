@@ -4,6 +4,7 @@ namespace niklasravnsborg\LaravelPdf;
 
 use Config;
 use Mpdf;
+use Mpdf\Output\Destination;
 
 /**
  * Laravel PDF: mPDF wrapper for Laravel 5
@@ -98,8 +99,7 @@ class Pdf {
 	 * @param array $permisson Permissons e.g.: ['copy', 'print']
 	 * @param string $userPassword User password
 	 * @param string $ownerPassword Owner password
-	 * @return static
-	 *
+	 * @return void
 	 */
 	public function setProtection($permisson, $userPassword = '', $ownerPassword = '')
 	{
@@ -109,46 +109,49 @@ class Pdf {
 		return $this->mpdf->SetProtection($permisson, $userPassword, $ownerPassword);
 	}
 
-	/**
-	 * Output the PDF as a string.
-	 *
-	 * @return string The rendered PDF as string
-	 */
-	public function output()
-	{
-		return $this->mpdf->Output('', 'S');
+    /**
+     * Output the PDF as a string.
+     *
+     * @return string The rendered PDF as string
+     * @throws Mpdf\MpdfException
+     */
+	public function output(): string {
+		return $this->mpdf->Output('', Destination::STRING_RETURN);
 	}
 
-	/**
-	 * Save the PDF to a file
-	 *
-	 * @param $filename
-	 * @return static
-	 */
+    /**
+     * Save the PDF to a file
+     *
+     * @param $filename
+     * @return void
+     * @throws Mpdf\MpdfException
+     */
 	public function save($filename)
 	{
-		return $this->mpdf->Output($filename, 'F');
+		return $this->mpdf->Output($filename, Destination::FILE);
 	}
 
-	/**
-	 * Make the PDF downloadable by the user
-	 *
-	 * @param string $filename
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function download($filename = 'document.pdf')
+    /**
+     * Make the PDF downloadable by the user
+     *
+     * @param string $filename
+     * @return void
+     * @throws Mpdf\MpdfException
+     */
+	public function download(string $filename = 'document.pdf')
 	{
-		return $this->mpdf->Output($filename, 'D');
+		return $this->mpdf->Output($filename, Destination::DOWNLOAD);
 	}
 
-	/**
-	 * Return a response with the PDF to show in the browser
-	 *
-	 * @param string $filename
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function stream($filename = 'document.pdf')
+    /**
+     * Return a response with the PDF to show in the browser
+     *
+     * @param string $filename
+     * @return void
+     * @throws Mpdf\MpdfException
+     */
+	public function stream(string $filename = 'document.pdf')
 	{
-		return $this->mpdf->Output($filename, 'I');
+		return $this->mpdf->Output($filename, Destination::INLINE);
 	}
 }
