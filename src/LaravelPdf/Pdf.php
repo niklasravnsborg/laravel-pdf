@@ -34,6 +34,8 @@ class Pdf {
 			'orientation'       => $this->getConfig('orientation'),       // This attribute specifies the default page orientation of the new document if format is defined as an array. This value will be ignored if format is a string value.
 			'tempDir'           => $this->getConfig('tempDir')            // temporary directory
 		];
+		
+		$mpdf_config = array_merge($mpdf_config, $this->config);
 
 		// Handle custom fonts
 		$mpdf_config = $this->addCustomFontsConfig($mpdf_config);
