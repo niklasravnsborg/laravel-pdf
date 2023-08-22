@@ -1,3 +1,7 @@
+> [!WARNING]  
+> niklasravnsborg/laravel-pdf is not maintained! This repository has been deprecated and archived on 2023-08-22.
+> Look at https://github.com/misterspelik/laravel-pdf for a potential alternative.
+
 # Laravel PDF: mPDF wrapper for Laravel 5
 
 > Easily generate PDF documents from HTML right inside of Laravel using this mPDF wrapper.
