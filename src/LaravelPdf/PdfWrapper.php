@@ -3,7 +3,6 @@
 namespace niklasravnsborg\LaravelPdf;
 
 use File;
-use View;
 
 class PdfWrapper {
 
@@ -26,7 +25,7 @@ class PdfWrapper {
 	 */
 	public function loadFile($file, $config = [])
 	{
-		return new Pdf(File::get($file), $config);
+		return new Pdf(file($file), $config);
 	}
 
 	/**
@@ -39,7 +38,7 @@ class PdfWrapper {
 	 */
 	public function loadView($view, $data = [], $mergeData = [], $config = [])
 	{
-		return new Pdf(View::make($view, $data, $mergeData)->render(), $config);
+		return new Pdf(view($view, $data, $mergeData)->render(), $config);
 	}
 
 }

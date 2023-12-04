@@ -2,7 +2,6 @@
 
 namespace niklasravnsborg\LaravelPdf;
 
-use Config;
 use Mpdf;
 
 /**
@@ -71,13 +70,13 @@ class Pdf {
 		if (isset($this->config[$key])) {
 			return $this->config[$key];
 		} else {
-			return Config::get('pdf.' . $key);
+			return config('pdf.' . $key);
 		}
 	}
 
 	protected function addCustomFontsConfig($mpdf_config)
 	{
-		if (!Config::has('pdf.font_path') || !Config::has('pdf.font_data')) {
+		if (!config()->has('pdf.font_path') || !config()->has('pdf.font_data')) {
 			return $mpdf_config;
 		}
 
@@ -86,8 +85,8 @@ class Pdf {
 		$fontData = (new Mpdf\Config\FontVariables())->getDefaults()['fontdata'];
 
 		// Merge default with custom configuration
-		$mpdf_config['fontDir'] = array_merge($fontDirs, [Config::get('pdf.font_path')]);
-		$mpdf_config['fontdata'] = array_merge($fontData, Config::get('pdf.font_data'));
+		$mpdf_config['fontDir'] = array_merge($fontDirs, [config('pdf.font_path')]);
+		$mpdf_config['fontdata'] = array_merge($fontData, config('pdf.font_data'));
 
 		return $mpdf_config;
 	}
